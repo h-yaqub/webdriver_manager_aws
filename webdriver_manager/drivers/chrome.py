@@ -53,6 +53,8 @@ class ChromeDriver(Driver):
 
     def get_latest_release_version(self):
         determined_browser_version = self.get_browser_version_from_os()
+        if determined_browser_version is None:
+            determined_browser_version = "116.0.5845"
         log(f"Get LATEST {self._name} version for {self._browser_type}")
         if determined_browser_version is not None and version.parse(determined_browser_version) >= version.parse("115"):
             url = "https://googlechromelabs.github.io/chrome-for-testing/latest-patch-versions-per-build.json"
